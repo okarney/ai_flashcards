@@ -19,8 +19,13 @@ export default function Home() {
             AI Flashcards
           </Typography>
           <SignedOut>
-            <Button color="inherit">Login</Button>
-            <Button color="inherit">Sign Up</Button>
+            <Button color="inherit" href="sign-in">
+              {''}
+              Login
+            </Button>
+            <Button color="inherit" href="sign-up">
+              {''}
+              Sign Up</Button>
           </SignedOut>
           <SignedIn>
             <UserButton />
