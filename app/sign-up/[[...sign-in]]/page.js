@@ -5,10 +5,10 @@ import Link from 'next/link'
 
 export default function SignUpPage() {
     return <Container maxWidth='100vw'>
-        <AppBar position="static" sx={{backgroundColor: '#3f51b5'}}>
+        <AppBar position="static" sx={{backgroundColor: '#000000'}}>
             <Toolbar>
                 <Typography variant="h6" sx={{flexGrow: 1}}>
-                    Flashcard SaaS
+                    AI Flashcards
                 </Typography>
                 <Button color="inherit">
                     <Link href="/sign-in" passHref>
