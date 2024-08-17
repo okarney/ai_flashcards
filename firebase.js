@@ -1,21 +1,29 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore, doc, updateDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDiJYoYPjaALzQYTV2nVe_dPaN94cFRPYE",
-  authDomain: "ai-flashcards-4812d.firebaseapp.com",
-  projectId: "ai-flashcards-4812d",
-  storageBucket: "ai-flashcards-4812d.appspot.com",
-  messagingSenderId: "714172926736",
-  appId: "1:714172926736:web:858857ea7a97112f3df395",
-  measurementId: "G-ZEGBD2H4CQ"
+  apiKey: "AIzaSyAUZnvBf7g7wQVAvh5vKgXAu3ZZh5N97oA",
+  authDomain: "aiflashcards-28783.firebaseapp.com",
+  projectId: "aiflashcards-28783",
+  storageBucket: "aiflashcards-28783.appspot.com",
+  messagingSenderId: "1008181829367",
+  appId: "1:1008181829367:web:fb9e5ae48b9d0aaf7cfdf2"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const db = getFirestore(app); // Initialize Firestore and get a reference to it
+
+// Function to update user's subscription status in Firestore
+export async function updateUserSubscriptionStatus(userId, status) {
+  try {
+    const userDocRef = doc(db, 'users', userId);
+    await updateDoc(userDocRef, { subscriptionStatus: status });
+    console.log(`User ${userId} subscription status updated to: ${status}`);
+  } catch (error) {
+    console.error("Error updating subscription status:", error);
+  }
+}
+
+export { db }; // Export the db object for use in other files
